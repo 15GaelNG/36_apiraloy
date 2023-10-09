@@ -5,7 +5,11 @@ FROM python:3.9-alpine
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 RUN adduser -D raloy
-ENV MY_IP=172.17.0.1
+ENV SERVER_IP=$SERVER_IP
+
+#--- Copy script entrypoint.sh the container
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 #--- Update OS
 
